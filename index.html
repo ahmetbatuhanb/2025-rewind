@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>2025 Anılarımız 💖💫</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -28,10 +32,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 999;
-}
-
-#lockScreen h1 {
-    margin-bottom: 10px;
+    text-align: center;
 }
 
 #lockScreen input {
@@ -40,15 +41,17 @@ body {
     border: none;
     text-align: center;
     font-size: 16px;
+    margin-top: 10px;
 }
 
 #lockScreen button {
     margin-top: 15px;
-    padding: 10px 20px;
+    padding: 10px 24px;
     border: none;
     border-radius: 20px;
     background: #fff;
     cursor: pointer;
+    font-size: 15px;
 }
 
 /* GENEL */
@@ -67,7 +70,7 @@ h1, h2 {
     to {opacity: 1; transform: translateY(0);}
 }
 
-/* MÜZİK */
+/* MÜZİK BUTONU */
 .music-btn {
     position: fixed;
     bottom: 20px;
@@ -78,6 +81,7 @@ h1, h2 {
     padding: 12px 18px;
     cursor: pointer;
     z-index: 10;
+    display: none;
 }
 
 /* TIMELINE */
@@ -113,7 +117,7 @@ h1, h2 {
 </div>
 
 <!-- MÜZİK -->
-<div class="music-btn" onclick="toggleMusic()">▶ Müziğimizi dinlemek için tıklat!</div>
+<div class="music-btn" onclick="toggleMusic()">▶ Müziğimizi dinlemek için tıkla</div>
 <audio id="music" loop>
     <source src="bana-sen-lazimsin.mp3" type="audio/mpeg">
 </audio>
@@ -121,7 +125,7 @@ h1, h2 {
 <!-- İÇERİK -->
 <section>
     <h1>2025 Anılarımız ✨</h1>
-    <p>Birlikte biriktirdiğimiz anılara ksıa bir bakış...</p>
+    <p>Birlikte biriktirdiğimiz anılara kısa bir bakış…</p>
 </section>
 
 <section>
@@ -129,27 +133,27 @@ h1, h2 {
     <div class="timeline">
 
         <div class="month">
-            <h3>İlk aylar</h3>
-            <p>Her şeyin başladığı, kalbimin seni tanıdığı zamanlar</p>
-            <img src="ay1.jpg">
+            <h3>İlk Aylar</h3>
+            <p>Her şeyin başladığı, kalbimin seni tanıdığı zamanlar.</p>
+            <img src="ay1.jpg" alt="">
         </div>
 
         <div class="month">
             <h3>2. Ay</h3>
             <p>Gülüşünün hayatıma yerleştiği günler.</p>
-            <img src="ay2.jpg">
+            <img src="ay2.jpg" alt="">
         </div>
 
         <div class="month">
             <h3>3. Ay</h3>
-            <p>Her şeyi yapmaya başladığımız zamanlar...</p>
-            <img src="ay3.jpg">
+            <p>Her şeyi birlikte yapmaya başladığımız zamanlar…</p>
+            <img src="ay3.jpg" alt="">
         </div>
 
         <div class="month">
             <h3>4. Ay</h3>
             <p>Artık “biz” dediğim her şey.</p>
-            <img src="ay4.jpg">
+            <img src="ay4.jpg" alt="">
         </div>
 
     </div>
@@ -159,9 +163,12 @@ h1, h2 {
     <h2>Ve Şimdi… 💫</h2>
     <p>
         Bu sadece bir anılar sayfası değil.<br>
-        Devamını birlikte yazmak istediğim bir hikâye. 
+        Devamını birlikte yazmak istediğim bir hikâye.
     </p>
-    <strong>İyi ki varsın 🤍 Seni çok seviyorum gönlümün en güzel köşesi SEVDAMM 💖</strong>
+    <strong>
+        İyi ki varsın 🤍  
+        Seni çok seviyorum, gönlümün en güzel köşesi SEVDAM 💖
+    </strong>
 </section>
 
 <script>
@@ -169,6 +176,7 @@ function unlock() {
     const pass = document.getElementById("password").value;
     if (pass === "22.10.25") {
         document.getElementById("lockScreen").style.display = "none";
+        document.querySelector(".music-btn").style.display = "block";
     } else {
         document.getElementById("error").innerText = "Yanlış şifre…";
     }
@@ -180,11 +188,11 @@ function toggleMusic() {
     if (!playing) {
         music.play();
         playing = true;
-        document.querySelector(".music-btn").innerText = "⏸ Durdur";
+        document.querySelector(".music-btn").innerText = "⏸ Müziği Durdur";
     } else {
         music.pause();
         playing = false;
-        document.querySelector(".music-btn").innerText = "▶ Müziği Başlat";
+        document.querySelector(".music-btn").innerText = "▶ Müziğimizi dinlemek için tıkla";
     }
 }
 </script>
