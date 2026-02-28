@@ -3,200 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmet & Kübra</title>
 
-<title>2025 Anılarımız 💖💫</title>
-
-<!-- GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
 }
 
-body {
-    margin: 0;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #fff;
-    overflow-x: hidden;
+/* LOGIN */
+#login{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    flex-direction:column;
+}
+#login input{
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    margin-top:10px;
+}
+#login button{
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-/* ŞİFRE EKRANI */
-#lockScreen {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #000428, #004e92);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    text-align: center;
+/* MAIN LAYOUT */
+#site{
+    display:none;
 }
 
-#lockScreen input {
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    text-align: center;
-    font-size: 16px;
-    margin-top: 10px;
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:220px;
+    height:100vh;
+    padding:40px 20px;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:22px;
 }
 
-#lockScreen button {
-    margin-top: 15px;
-    padding: 10px 24px;
-    border: none;
-    border-radius: 20px;
-    background: #fff;
-    cursor: pointer;
-    font-size: 15px;
+.sidebar small{
+    display:block;
+    margin-top:10px;
+    font-size:16px;
 }
 
-/* GENEL */
-section {
-    padding: 70px 20px;
-    text-align: center;
-    animation: fade 1.2s ease;
+.content{
+    margin-left:240px;
+    padding:40px;
 }
 
-h1, h2 {
-    font-weight: 600;
+.nav{
+    position:fixed;
+    top:20px;
+    right:40px;
 }
 
-@keyframes fade {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+.nav a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    cursor:pointer;
 }
 
-/* MÜZİK BUTONU */
-.music-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(255,255,255,0.9);
-    color: #000;
-    border-radius: 50px;
-    padding: 12px 18px;
-    cursor: pointer;
-    z-index: 10;
-    display: none;
+.section{
+    display:none;
 }
 
-/* TIMELINE */
-.timeline {
-    max-width: 800px;
-    margin: auto;
+.section.active{
+    display:block;
 }
 
-.month {
-    background: rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 25px;
+img{
+    max-width:100%;
+    border-radius:15px;
+    margin:20px 0;
 }
 
-.month img {
-    width: 100%;
-    border-radius: 15px;
-    margin-top: 15px;
+.poem{
+    margin-top:20px;
+    line-height:1.8;
+    white-space:pre-line;
+}
+
+.gallery img{
+    margin-bottom:30px;
 }
 </style>
 </head>
-
 <body>
 
-<!-- ŞİFRE -->
-<div id="lockScreen">
-    <h1>🔒❤️ Bu sayfa yalnızca sana özel hazırlandı</h1>
-    <p>Şifreyi gir</p>
-    <input type="password" id="password" placeholder="•••••••">
-    <button onclick="unlock()">Giriş</button>
-    <p id="error" style="color:#ffb3b3;"></p>
+<!-- LOGIN -->
+<div id="login">
+    <h2>🔒 Sadece Sana Özel</h2>
+    <input type="password" id="password" placeholder="Şifre">
+    <button onclick="checkPassword()">Giriş</button>
+    <p id="error"></p>
 </div>
 
-<!-- MÜZİK -->
-<div class="music-btn" onclick="toggleMusic()">▶ Müziğimizi dinlemek için tıkla</div>
-<audio id="music" loop>
-    <source src="bana-sen-lazimsin.mp3" type="audio/mpeg">
-</audio>
+<!-- SITE -->
+<div id="site">
 
-<!-- İÇERİK -->
-<section>
-    <h1>2025 Anılarımız ✨</h1>
-    <p>Birlikte biriktirdiğimiz anılara kısa bir bakış…</p>
-</section>
+<div class="sidebar">
+    Ahmet & Kübra
+    <small>22.10.25</small>
+</div>
 
-<section>
-    <h2>Ay Ay Biz 🕰️</h2>
-    <div class="timeline">
+<div class="nav">
+    <a onclick="showSection('home')">Ana Sayfa</a>
+    <a onclick="showSection('months')">Ay Ay Biz</a>
+    <a onclick="showSection('letter')">Mektup</a>
+</div>
 
-        <div class="month">
-            <h3>İlk Aylar</h3>
-            <p>Her şeyin başladığı, kalbimin seni tanıdığı zamanlar.</p>
-            <img src="ay1.jpg" alt="">
+<div class="content">
+
+    <!-- ANA SAYFA -->
+    <div id="home" class="section active">
+        <h1>Hoş Geldin ❤️</h1>
+        <p>Hayatımın en güzel hikayesinin kahramanı...</p>
+
+        <img src="foto1.jpg">
+
+        <div class="poem">
+Sen kalbimin en sessiz yerinde,
+Ama en güçlü yankısısın...
         </div>
-
-        <div class="month">
-            <h3>2. Ay</h3>
-            <p>Gülüşünün hayatıma yerleştiği günler.</p>
-            <img src="ay2.jpg" alt="">
-        </div>
-
-        <div class="month">
-            <h3>3. Ay</h3>
-            <p>Her şeyi birlikte yapmaya başladığımız zamanlar…</p>
-            <img src="ay3.jpg" alt="">
-        </div>
-
-        <div class="month">
-            <h3>4. Ay</h3>
-            <p>Artık “biz” dediğim her şey.</p>
-            <img src="ay4.jpg" alt="">
-        </div>
-
     </div>
-</section>
 
-<section>
-    <h2>Ve Şimdi… 💫</h2>
-    <p>
-        Bu sadece bir anılar sayfası değil.<br>
-        Devamını birlikte yazmak istediğim bir hikâye.
-    </p>
-    <strong>
-        İyi ki varsın 🤍  
-        Seni çok seviyorum, gönlümün en güzel köşesi SEVDAM 💖
-    </strong>
-</section>
+    <!-- AY AY BİZ -->
+    <div id="months" class="section">
+        <h1>Ay Ay Biz ✨</h1>
+        <div class="gallery">
+            <img src="ay1.jpg">
+            <p>İlk ayımız... Her şeyin başladığı zaman.</p>
+
+            <img src="ay2.jpg">
+            <p>Birlikte güldüğümüz günler...</p>
+
+            <img src="ay3.jpg">
+            <p>Birbirimize daha da bağlandığımız anlar...</p>
+        </div>
+    </div>
+
+    <!-- MEKTUP -->
+    <div id="letter" class="section">
+        <h1>Sana Bir Mektup 💌</h1>
+        <p>
+Buraya ona yazacağın uzun mektup gelecek...
+Kalbinden ne geçiyorsa.
+        </p>
+    </div>
+
+</div>
+</div>
 
 <script>
-function unlock() {
-    const pass = document.getElementById("password").value;
-    if (pass === "22.10.25") {
-        document.getElementById("lockScreen").style.display = "none";
-        document.querySelector(".music-btn").style.display = "block";
-    } else {
-        document.getElementById("error").innerText = "Yanlış şifre…";
+function checkPassword(){
+    var password=document.getElementById("password").value;
+
+    if(password==="kubra2025"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("site").style.display="block";
+    }else{
+        document.getElementById("error").innerText="Yanlış şifre...";
     }
 }
 
-let playing = false;
-function toggleMusic() {
-    const music = document.getElementById("music");
-    if (!playing) {
-        music.play();
-        playing = true;
-        document.querySelector(".music-btn").innerText = "⏸ Müziği Durdur";
-    } else {
-        music.pause();
-        playing = false;
-        document.querySelector(".music-btn").innerText = "▶ Müziğimizi dinlemek için tıkla";
-    }
+function showSection(id){
+    var sections=document.querySelectorAll(".section");
+    sections.forEach(function(sec){
+        sec.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
 }
 </script>
 
 </body>
 </html>
-
